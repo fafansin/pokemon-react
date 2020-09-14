@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import Pokedex from './Pokedex';
 import './App.css';
+import Pokemons from './Pokemons';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let list1 = [];
+    let totalA = 0;
+    let totalB = 0;
+
+    for (let index = 0; index < 4; index++) {
+        let item = Pokemons.getOne();
+        list1.push(item);
+        totalA += item.base_experience;
+    }
+    
+    let list2 = Pokemons.list;
+    list2.forEach(element => {
+        totalB += element.base_experience;
+    });
+
+    console.log("1 " + totalA);
+    console.log("2 " + totalB);
+    
+    
+    return (
+            <div>
+                <Pokedex key="Laviel" isWinner={totalB > totalA} list={list2}/>
+                <Pokedex key="Rivka" isWinner={totalA > totalB} list={list1}/>
+            </div>
+        );
 }
 
 export default App;

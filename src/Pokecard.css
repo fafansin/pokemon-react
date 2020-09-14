@@ -1,0 +1,11 @@
+.Pokecard{
+    float:left; 
+    max-width: 250px;
+    border:solid 1px black;
+    margin: 2px;
+    text-align: center;
+}
+
+.cleaner{
+    clear:both;
+} 
